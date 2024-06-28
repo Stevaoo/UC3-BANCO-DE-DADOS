@@ -1,0 +1,41 @@
+//Tipos de Dados Numéricos
+INT: Números inteiros.
+Ex; 1, 8, -10, 1000
+
+//BIGNT: Números inteiros Maiores.
+Ex: 1000000, -987426838, 9645634784453553
+
+// MODELO
+
+CREATE DATABASE IF NOT EXISTS Loja_Tevinho;
+
+USE Loja_Tevinho;
+
+    CREATE TABLE IF NOT EXISTS CLIENTE (
+    ID_Cliente INT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Email VARCHAR(100)
+    );
+    
+    CREATE TABLE IF NOT EXISTS PEDIDOS(
+        ID_Pedido INT PRIMARY KEY,
+        Descricao VARCHAR(200),
+        Valor DECIMAL(10, 2),
+        ID_Cliente INT,
+        FOREIGN KEY(id_Cliente) REFERENCES Clientes(ID_Cliente)
+        );
+
+
+INSERT IGNORE INTO Clientes(ID_cliente, Nome,Email) VALUES
+(1, ' Stevão Rodrigues', 'stevao@gmail.com'),
+(2, 'Lucas FLorão', 'lucas@gmil.com'),
+(3, 'Matheus Mattos', 'matheus@gmail.com'),
+(4, 'Pedro Henrique', 'pedro@gmail.com');
+
+INSERT IGNORE INTO Pedidos(ID_Pedido, Descricao, Valor, ID_Cliente) VALUE
+(101, 'Compra de Móveis', '1500,00', 1),
+(102, 'Pedido de Eletrônicos', '2500,00', 2),
+(103, 'Serviços de Instalações', '500,75',3),
+(104, 'Iphone 13 Pro', '7000,00', 4);
+
+
