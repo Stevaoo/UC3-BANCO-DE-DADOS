@@ -64,4 +64,39 @@ SELECT Clientes.nome, COUNT(Pedidos.idPedidos) AS TOTAL_PEDIDOS
 FROM Clientes 
 INNER JOIN Pedidos ON Clientes.idClientes = Pedidos.idClientes
 GROUP BY Clientes.nome
--- SELECIONA O NOME E CONTA QUANTOS idPedidos TEM NA COLUNA Pedidos E O NOME DA BUSCA SERÁ TOTAL_PEDIDOS, E CONSULTA A TABELA Clintes E Pedidos COM A CONDIÇÃO SENDO AMBOS TEREM (idClientes), GROUP BY ELE AGRUPA POR NOME   
+-- SELECIONA O NOME E CONTA QUANTOS idPedidos TEM NA COLUNA Pedidos E O NOME DA BUSCA SERÁ TOTAL_PEDIDOS, E CONSULTA A TABELA Clintes E Pedidos COM A CONDIÇÃO SENDO AMBOS TEREM (idClientes), GROUP BY ELE AGRUPA POR NOME 
+
+
+--- BANCO DE DADOS EM CASA DOMINGOOUUU
+
+CREATE TABLE IF NOT EXISTS Eventos(
+ID_Evento INT PRIMARY KEY,
+Nome_evento VARCHAR(100),
+Data_evento DATE,
+Local_descricao VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS Parcipantes(
+ID_participante INT PRIMARY KEY,
+Nome_participante VARCHAR(100),
+Email VARCHAR(100),
+Telefone VARCHAR(100)
+);
+
+
+CREATE TABLE IF NOT EXISTS Palestrantes(
+ID_palestrante INT PRIMARY KEY,
+Nome_palestrante VARCHAR(100),
+Especialidade VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS Inscricoes(
+ID_inscricao INT PRIMARY KEY,
+ID_participante INT,
+ID_evento INT,
+Data_inscricao DATE,
+    
+FOREIGN KEY (ID_participante) REFERENCES Participantes(ID_participante),
+    
+FOREIGN KEY (ID_evento) REFERENCES Eventos (ID_evento)
+);
